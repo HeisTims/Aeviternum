@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Your time is now.",
 };
 
+import { AppProvider } from "@/lib/store";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-surface to-background">{children}</body>
+      <body className="min-h-full flex flex-col bg-background text-foreground bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-surface to-background">
+        <AppProvider>
+          {children}
+        </AppProvider>
+      </body>
     </html>
   );
 }
